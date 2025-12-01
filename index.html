@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Antique - Your Ultimate Destination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #d4af37;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-menu a:hover {
+            color: #d4af37;
+        }
+
+        .book-now-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+            padding: 0.7rem 1.8rem;
+            border-radius: 25px;
+            color: #1a1a2e !important;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .book-now-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #d4af37;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .hero-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+            color: #1a1a2e;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Booking Form Section */
+        .booking-bar {
+            background: white;
+            padding: 2rem 5%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-form {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a1a2e;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #d4af37;
+        }
+
+        .booking-form button {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .booking-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 5rem 5%;
+            background: #f8f9fa;
+        }
+
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800') center/cover;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .feature-content {
+            padding: 1.5rem;
+        }
+
+        .feature-content h3 {
+            font-size: 1.5rem;
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 5rem 5%;
+            background: #f8f9fa;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .blog-card h3 {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .blog-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #1a1a2e;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 3rem 5%;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #d4af37;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: #d4af37;
+            color: #1a1a2e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1rem;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close:hover {
+            color: #d4af37;
+        }
+
+        .modal h2 {
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-form input,
+        .modal-form select,
+        .modal-form textarea {
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .modal-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .modal-form button {
+            background: linear-gradient(135deg, #d4af37 0%, #c9a227 100%);
+            color: #1a1a2e;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: transform 0.3s;
+        }
+
+        .modal-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">HOTEL ANTIQUE</a>
+            <ul class="nav-menu">
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#suites">Suites and Rooms</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#terms">Terms and Condition</a></li>
+                <li><a href="#" class="book-now-btn" id="bookNowNav">Book Now</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Hotel Antique</h1>
+            <p>Your Ultimate Destination</p>
+            <a href="#" class="hero-btn" id="bookNowHero">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Booking Bar -->
+    <section class="booking-bar">
+        <form class="booking-form">
+            <div class="form-group">
+                <label for="checkin">Check In</label>
+                <input type="date" id="checkin" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout">Check Out</label>
+                <input type="date" id="checkout" required>
+            </div>
+            <div class="form-group">
+                <label for="adults">Adults</label>
+                <select id="adults">
+                    <option value="1">1 Adult</option>
+                    <option value="2">2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4">4 Adults</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="children">Children</label>
+                <select id="children">
+                    <option value="0">0 Children</option>
+                    <option value="1">1 Child</option>
+                    <option value="2">2 Children</option>
+                    <option value="3">3 Children</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="promo">Promo Code</label>
+                <input type="text" id="promo" placeholder="Enter code">
+            </div>
+            <div class="form-group">
+                <label>&nbsp;</label>
+                <button type="button" id="bookNowForm">Book Now</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2>Korea's Finest Hotel</h2>
+                <p>Hotel Antique is a heritage hotel located in the heart of Seoul, the thriving capital city, in a prime location that is minutes walking distance from major cultural landmarks. Our location is in a commercial area with high-end shops and a variety of exquisite Korean and international dining options. Our 5-star deluxe luxury property is conveniently situated 18 KM from Incheon International Airport, about 2 KM from the famous shopping district of Myeongdong.</p>
+            </div>
+            <div class="about-image"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="suites">
+        <div class="features-container">
+            <h2 class="section-title">Suites and Rooms</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800')"></div>
+                    <div class="feature-content">
+                        <h3>Deluxe Suite</h3>
+                        <p>Experience ultimate luxury in our spacious deluxe suites with panoramic city views, premium amenities, and elegant furnishings that blend modern comfort with traditional charm.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800')"></div>
+                    <div class="feature-content">
+                        <h3>Executive Room</h3>
+                        <p>Perfect for business travelers, our executive rooms feature a dedicated workspace, high-speed internet, and access to our exclusive executive lounge with complimentary refreshments.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-image" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800')"></div>
+                    <div class="feature-content">
+                        <h3>Premium Suite</h3>
+                        <p>Indulge in our premium suites offering separate living areas, luxurious bathrooms with soaking tubs, and personalized concierge service to make your stay unforgettable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="blog-container">
+            <h2 class="section-title">Latest News & Updates</h2>
+            <div class="blog-card">
+                <h3>Discover the Heritage of Hotel Antique</h3>
+                <p>Hotel Antique is a heritage hotel located in the heart of Seoul, the thriving capital city, in a prime location that is minutes walking distance from major cultural landmarks. Our location is in a commercial area with high-end shops and a variety of exquisite Korean and international dining options. Our 5-star deluxe luxury property is conveniently situated 18 KM from Incheon International Airport, about 2 KM from the famous shopping district of Myeongdong. Experience the perfect blend of traditional Korean hospitality and modern luxury amenities.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>HOTEL ANTIQUE</h3>
+                <p>123 Heritage Street, Gangnam-gu<br>Seoul, South Korea</p>
+                <p>Tel: +82 2 1234 5678<br>Fax: +82 2 1234 5679</p>
+                <p>reservation@hotelantique.com</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.289!2d127.027!3d37.497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDI5JzQ5LjIiTiAxMjfCsDAxJzM3LjIiRQ!5e0!3m2!1sen!2s!4v1234567890" width="100%" height="150" style="border:0; border-radius: 8px; margin-top: 1rem;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#rooms">Rooms</a>
+                <a href="#about">About Us</a>
+                <a href="#suites">Suites and Rooms</a>
+                <a href="#contact">Contact Us</a>
+                <a href="#terms">Terms and Condition</a>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">i</a>
+                    <a href="#" title="Twitter">t</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Your Stay</h2>
+            <form class="modal-form">
+                <input type="text" placeholder="Full Name *" required>
+                <input type="email" placeholder="Email Address *" required>
+                <input type="tel" placeholder="Phone Number *" required>
+                <input type="date" placeholder="Check In Date *" required>
+                <input type="date" placeholder="Check Out Date *" required>
+                <select required>
+                    <option value="">Select Room Type *</option>
+                    <option value="deluxe">Deluxe Suite</option>
+                    <option value="executive">Executive Room</option>
+                    <option value="premium">Premium Suite</option>
+                </select>
+                <select required>
+                    <option value="">Number of Guests *</option>
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                </select>
+                <input type="text" placeholder="Promo Code (Optional)">
+                <textarea placeholder="Special Requests"></textarea>
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const modal = document.getElementById('bookingModal');
+        const bookBtns = [
+            document.getElementById('bookNowNav'),
+            document.getElementById('bookNowHero'),
+            document.getElementById('bookNowForm')
+        ];
+        const closeBtn = document.querySelector('.close');
+
+        bookBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'block';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Set min date for date inputs
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').setAttribute('min', today);
+        document.getElementById('checkout').setAttribute('min', today);
+
+        // Form submission
+        document.querySelector('.modal-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your booking! We will contact you shortly to confirm your reservation.');
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
